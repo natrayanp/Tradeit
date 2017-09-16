@@ -1,0 +1,14 @@
+
+<md-toolbar color ="primary">
+  <button md-raised-button color="warn">add</button>
+  
+  <button md-raised-button color="warn">Cancel</button>
+</md-toolbar>
+
+<hr>
+
+<div fxLayoutWrap>
+<div *ngFor="let user of Users" >    
+    <app-user-card [user]="user"> </app-user-card>
+</div>
+</div>

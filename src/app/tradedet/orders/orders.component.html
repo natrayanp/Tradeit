@@ -1,0 +1,146 @@
+
+<!--
+order works
+-->
+<
+
+
+<md-card fxLayout="row" FxLayoutWrap>
+
+    <!--form method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform-->
+    <form method="post" id="basket-form" action="http://127.0.0.1:8000" #myform>
+        <input  name="api_key" value={{api_key}} />
+        <input  id="basket" name="data" value={{values3}} />
+    </form>
+      
+
+
+<!--
+    <form [formGroup]="rForm" method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform>
+
+
+    
+
+    <md-form-field >
+        <input type="text" placeholder="Pick one" aria-label="Number" mdInput formControlName="Portfolioname" [mdAutocomplete]="auto">
+        <md-autocomplete #auto="mdAutocomplete">
+          <md-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </md-option>  
+        </md-autocomplete>
+    </md-form-field>
+  
+    <md-form-field >
+        <input mdInput placeholder="tradingsymbol" formControlName="tradingsymbol" value="ITC">
+        <md-error *ngIf="!rForm.controls['tradingsymbol'].valid">
+            tradingsymbol is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="exchange" formControlName="exchange" value="NSE">
+        <md-error *ngIf="!rForm.controls['exchange'].valid">
+            exchange is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+    <md-form-field >
+        <input mdInput placeholder="transaction type" formControlName="transaction_type" value="BUY">
+        <md-error *ngIf="!rForm.controls['transaction_type'].valid">
+            transaction type is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="order type" formControlName="order_type" value="MARKET">
+        <md-error *ngIf="!rForm.controls['order_type'].valid">
+            order type is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="quantity" formControlName="quantity" value="10">
+        <md-error *ngIf="!rForm.controls['quantity'].valid">
+            quantity is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+<!--
+    <md-form-field >
+        <input mdInput placeholder="product" formControlName="product">
+        <md-error *ngIf="!rForm.controls['product'].valid">
+            product is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="price" formControlName="price">
+        <md-error *ngIf="!rForm.controls['price'].valid">
+            price is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="trigger price" formControlName="trigger_price">
+        <md-error *ngIf="!rForm.controls['trigger_price'].valid">
+            trigger price is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="disclosed quantity" formControlName="disclosed_quantity">
+        <md-error *ngIf="!rForm.controls['disclosed_quantity'].valid">
+            disclosed quantity is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+
+    <md-form-field >
+        <input mdInput placeholder="validity" formControlName="validity">
+        <md-error *ngIf="!rForm.controls['validity'].valid">
+            validity is <strong>required</strong>
+        </md-error>
+    </md-form-field>
+  -->
+    <button md-raised-button color="primary">Submit</button>
+
+
+<!--  <md-form-field  >
+      <input mdInput placeholder="Favorite food" value="Sushi">
+    </md-form-field>
+    <md-form-field  >
+        <input mdInput placeholder="Favorite food" value="Sushi">
+      </md-form-field>
+
+
+</form>
+
+    -->
+</md-card>
+
+
+<md-card>
+    <!--natrayan
+  --ssss is {{ssss|json}} -->
+   basket is: {{    post2 | json  }}
+    
+   <hr>
+   <form [formGroup]="sForm" (ngSubmit)="dataPost(sForm.value)" >
+       
+           <md-form-field >
+               <input mdInput formControlName="api_key" value={{api_key}} >
+           </md-form-field>
+       
+           <md-form-field >
+               <input mdInput formControlName="data" value={{post1}} >
+
+           </md-form-field>
+           
+           <button md-raised-button color="primary" >Submit</button>
+   </form>
+   
+</md-card>
+<button md-raised-button color="primary" onclick="natnat()" >add basket</button>
+<button md-raised-button color="primary" id ="custom-button" (Click)="testes($event)">Submit basket</button>
+<button id="natsss">autoclick</button>
+
+<input #someInput type="text"/>
+<button #natbutton (click)="natrayan()">comme</button>
+<button #anabutton (click)="ananthi()">ananti</button>

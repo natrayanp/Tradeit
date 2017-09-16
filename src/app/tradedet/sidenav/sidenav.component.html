@@ -1,0 +1,24 @@
+<!--
+sidnav works
+  -->
+        <md-sidenav-container class="navcontainerss"  >
+                <md-sidenav mode="side"  #navss>
+                  <!-- sidenav content -->
+                  Drawer content
+                  <button md-button (click)=navss.close()>close</button>
+                </md-sidenav>
+              <md-card fxLayout="column" fxAllign="centre">
+               
+                    <span >Main content</span>
+                    
+                  <!-- primary content -->
+                  <button md-raised-button (click)=navss.open()>open</button>
+
+                   <router-outlet></router-outlet>
+
+
+                
+                
+                </md-card>
+        </md-sidenav-container>
+    

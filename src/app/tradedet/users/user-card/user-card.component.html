@@ -1,0 +1,27 @@
+<md-card class="my-card" [ngClass]="{'shadow': onEdit}">
+    <md-card-header class='crdhdr' >
+      
+      <md-card-title [fxHide]="onEdit" ><h3>{{edittedUser.name}}</h3></md-card-title>
+
+      <div [fxShow]="onEdit">
+      <form >
+          <md-form-field class="example-full-width" >
+            <input mdInput value={{edittedUser.name}} >
+          </md-form-field>
+        </form>
+      </div>  
+
+    </md-card-header>
+
+    <img md-card-image [src]="edittedUser.imglocation" class=" my-card-image">
+    
+    <md-card-content>
+    
+     
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button [fxHide]="onEdit" (click)="UserEdit()" color="accent">Edit</button>
+      <button md-raised-button [fxShow]="onEdit" (click)="UserSave()" color="accent">Save</button>
+      <button md-raised-button (click)="UserCancel()" color="accent">Cancel</button>
+    </md-card-actions>
+  </md-card>
