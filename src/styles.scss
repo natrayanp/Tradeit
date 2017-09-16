@@ -8,14 +8,16 @@ html, body {
   
 }
 
-app-weblayout,app-body,{
-  height: 100;
-  margin-top:64px;    
+app-weblayout, app-body {
+  height: 100%;
+  margin-top:64px;
 }
 
-app-body,app-home{
+
+
+
+
+app-body, app-home{
   height: 100%;   
   margin-top:0px;    
 }
-
-//test data for dev again
