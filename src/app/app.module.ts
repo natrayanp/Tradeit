@@ -13,6 +13,7 @@ import { MdAutocompleteModule } from '@angular/material';
 import { MdCard } from '@angular/material';
 import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import {MdSlideToggleModule} from '@angular/material';
+import {MatStepperModule} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -66,6 +67,7 @@ import { UserListComponent } from './tradedet/users/user-list/user-list.componen
     FormsModule,
     ReactiveFormsModule,
     MdSlideToggleModule,
+    MatStepperModule,
  //   InterceptorModule,
     RouterModule.forRoot(ROUTES)       
   ],

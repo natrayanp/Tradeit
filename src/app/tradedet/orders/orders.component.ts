@@ -43,6 +43,10 @@ export class OrdersComponent implements OnInit {
    ];
 
 
+   trantypes=[
+     'BUY',
+     'SELL'
+   ];
 
   object3=[];
   object4=[];

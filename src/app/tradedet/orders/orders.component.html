@@ -10,9 +10,9 @@ order works
         <button  md-raised-button color="accent" >+ Add Stocks</button>        
 </md-toolbar>
 
-<md-card fxLayout="Column" FxLayoutWrap>
+<md-card fxLayout="row" FxLayoutWrap >
 <div>
-<form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" fxFlex="1 1 auto">
+<form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" fxFlex>
 
     <!--
         #This is to be replaced with breads
@@ -26,13 +26,14 @@ order works
     </md-form-field>
 
     #This is as part of the stock code selection-->
-    <label>buy</label>
-    <md-slide-toggle
-              
-              [color]="color"
-              [checked]="checked"
-              [disabled]="disabled">                       
-    </md-slide-toggle>  
+    <md-form-field >
+            <input type="text" placeholder="Transaction Type" aria-label="Transaction Typee" mdInput formControlName="transaction_type" [mdAutocomplete]="auto1" >
+            <md-autocomplete #auto1="mdAutocomplete">
+              <md-option *ngFor="let trantype  of trantypes" [value]="trantype">
+                {{ trantype }}
+              </md-option>  
+            </md-autocomplete>
+        </md-form-field>
 
       <!--  #This is as part of the stock code selection -->
       <md-form-field >
