@@ -36,7 +36,9 @@ export class UserCardComponent implements OnInit {
 
   }
 
+  UserSave(){}
 
+  
 }
 
 

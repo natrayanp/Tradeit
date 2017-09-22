@@ -18,7 +18,8 @@ export class OrdersComponent implements OnInit {
   
   
  ngOnInit() {
-  this.renderer.listen(this.anabutton.nativeElement,'click',(event) => this.natrayan());
+  
+  //this.renderer.listen(this.anabutton.nativeElement,'click',(event) => this.natrayan());
   
   //this.renderer.listen(this.myform.nativeElement,'submit',(event) => this.myform.nativeElement.submit());
   //this.natbutton.nativeElement.click();
@@ -33,6 +34,16 @@ export class OrdersComponent implements OnInit {
     'Retirement'
    ];
    
+
+   ordertypes= [
+    'MARKET',
+    'LIMIT',
+    'STOPELOSS',
+    'STOPLOSSLIMIT'
+   ];
+
+
+
   object3=[];
   object4=[];
   lengths: any;
@@ -57,32 +68,42 @@ export class OrdersComponent implements OnInit {
   readonly:string='';
   api_key :string = 'uptxfbd1y845rxva'
   
+  //variables for Slider
+  color = 'primary';
+  checked = true;
+  disabled = false;  
+  
   data:string;
   ssss:string;
   ssss1:string;
   ssss2:string;
+  data1:any;
   First:number=1;
 
   constructor(private fb: FormBuilder,private http:HttpClient, private renderer: Renderer2) { 
     
     this.rForm = fb.group({
-    
+      
+      'Portfolioname':[null,Validators.required],
       'tradingsymbol':[null,Validators.required],
       'exchange':[null,Validators.required],
       'transaction_type':[null,Validators.required],
       'order_type':[null,Validators.required],
       'quantity':[null,Validators.required],
-     
-
-      'readonly':['false',Validators.required],
+      'product':[null,Validators.required],
+      'price':[null,Validators.required],
+      'trigger_price':[null,Validators.required],
+      'disclosed_quantity':[null,Validators.required],
+      'validity':[null,Validators.required],      
+      'readonly':['false',Validators.required]
        });
-    this.sForm = fb.group({
+/*    this.sForm = fb.group({
       'api_key':[null,Validators.required],
       'data':[null,Validators.required]
-    });
+    });*/
    
   }
-  values:string='[{"tradingsymbol": "INFY","exchange": "NSE","transaction_type": "BUY","order_type": "MARKET","quantity": 10,"readonly": false}]';
+  values:string='[{"tradingsymbol": "INFY","exchange": "NSE","transaction_type": "BUY","order_type": "MARKET","quantity": 10,"readonly": "true"}]';
   values1 = JSON.parse(this.values);
   values3=JSON.stringify(this.values1);
 
@@ -105,7 +126,7 @@ export class OrdersComponent implements OnInit {
   addPost(ssss1){
     
     this.object3.push(ssss1);
-    this.ssss1=JSON.stringify(this.object3);
+    this.ssss2=JSON.stringify(this.object3);
     console.log(this.object3);
    /* if (this.First ==1){
       this.ssss1=JSON.stringify(ssss1);    
@@ -143,7 +164,20 @@ export class OrdersComponent implements OnInit {
    // this.lengths='[{"api_key":"uptxfbd1y845rxva","data":'+this.object3+'}]';*/
   }
   
-  dataPost(ssss){
+  dataPost(data1){
+    console.log(data1);
+    /*var body =  this.ssss2;
+    var headers= new HttpHeaders();
+    console.log(body);
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+     this.http
+    .post('http://127.0.0.1:8080/nat',data1,{ headers: headers }) 
+    .subscribe();*/
+
+    this.http
+    .post('https://w98vuly6s7.execute-api.ap-southeast-1.amazonaws.com/dev/dev',data1) 
+    .subscribe();
+
 
     /*
     this.lengths='{"api_key":"'+ this.api_key+'","data":'+this.ssss1+'}';

@@ -17,7 +17,7 @@ export const ROUTES: Routes = [
   },
   
     
-  { path: '',      component: HomeComponent }
+  { path: '',      component: OrdersComponent }
   
 ];
 

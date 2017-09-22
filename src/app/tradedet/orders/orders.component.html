@@ -1,27 +1,22 @@
 
+
+
+
 <!--
 order works
 -->
-<
 
+<md-toolbar color="primary">
+        <button  md-raised-button color="accent" >+ Add Stocks</button>        
+</md-toolbar>
 
-<md-card fxLayout="row" FxLayoutWrap>
+<md-card fxLayout="Column" FxLayoutWrap>
+<div>
+<form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" fxFlex="1 1 auto">
 
-    <!--form method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform-->
-    <form method="post" id="basket-form" action="http://127.0.0.1:8000" #myform>
-        <input  name="api_key" value={{api_key}} />
-        <input  id="basket" name="data" value={{values3}} />
-    </form>
-      
-
-
-<!--
-    <form [formGroup]="rForm" method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform>
-
-
-    
-
-    <md-form-field >
+    <!--
+        #This is to be replaced with breads
+      <md-form-field >
         <input type="text" placeholder="Pick one" aria-label="Number" mdInput formControlName="Portfolioname" [mdAutocomplete]="auto">
         <md-autocomplete #auto="mdAutocomplete">
           <md-option *ngFor="let option of options" [value]="option">
@@ -29,33 +24,50 @@ order works
           </md-option>  
         </md-autocomplete>
     </md-form-field>
-  
-    <md-form-field >
-        <input mdInput placeholder="tradingsymbol" formControlName="tradingsymbol" value="ITC">
-        <md-error *ngIf="!rForm.controls['tradingsymbol'].valid">
-            tradingsymbol is <strong>required</strong>
-        </md-error>
-    </md-form-field>
+
+    #This is as part of the stock code selection-->
+    <label>buy</label>
+    <md-slide-toggle
+              
+              [color]="color"
+              [checked]="checked"
+              [disabled]="disabled">                       
+    </md-slide-toggle>  
+
+      <!--  #This is as part of the stock code selection -->
+      <md-form-field >
+            <input mdInput placeholder="exchange" formControlName="exchange" value="NSE">
+            <md-error *ngIf="!rForm.controls['exchange'].valid">
+                exchange is <strong>required</strong>
+            </md-error>
+        </md-form-field>
 
     <md-form-field >
-        <input mdInput placeholder="exchange" formControlName="exchange" value="NSE">
-        <md-error *ngIf="!rForm.controls['exchange'].valid">
-            exchange is <strong>required</strong>
-        </md-error>
-    </md-form-field>
-    <md-form-field >
-        <input mdInput placeholder="transaction type" formControlName="transaction_type" value="BUY">
-        <md-error *ngIf="!rForm.controls['transaction_type'].valid">
-            transaction type is <strong>required</strong>
-        </md-error>
-    </md-form-field>
+                    <input mdInput placeholder="tradingsymbol" formControlName="tradingsymbol" value="ITC">
+                    <md-error *ngIf="!rForm.controls['tradingsymbol'].valid">
+                        tradingsymbol is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
 
-    <md-form-field >
-        <input mdInput placeholder="order type" formControlName="order_type" value="MARKET">
-        <md-error *ngIf="!rForm.controls['order_type'].valid">
-            order type is <strong>required</strong>
-        </md-error>
-    </md-form-field>
+
+
+
+    
+
+
+
+                <md-form-field >
+                        <input type="text" placeholder="order type" aria-label="order type" mdInput formControlName="order_type" [mdAutocomplete]="auto">
+                        <md-autocomplete #auto="mdAutocomplete">
+                          <md-option *ngFor="let ordertype  of ordertypes" [value]="ordertype">
+                            {{ ordertype }}
+                          </md-option>  
+                        </md-autocomplete>
+                    </md-form-field>
+                  
+
+
+
 
     <md-form-field >
         <input mdInput placeholder="quantity" formControlName="quantity" value="10">
@@ -63,7 +75,7 @@ order works
             quantity is <strong>required</strong>
         </md-error>
     </md-form-field>
-<!--
+
     <md-form-field >
         <input mdInput placeholder="product" formControlName="product">
         <md-error *ngIf="!rForm.controls['product'].valid">
@@ -98,45 +110,50 @@ order works
             validity is <strong>required</strong>
         </md-error>
     </md-form-field>
-  -->
-    <button md-raised-button color="primary">Submit</button>
-
-
-<!--  <md-form-field  >
-      <input mdInput placeholder="Favorite food" value="Sushi">
-    </md-form-field>
-    <md-form-field  >
-        <input mdInput placeholder="Favorite food" value="Sushi">
-      </md-form-field>
-
 
 </form>
-
-    -->
+</div>
+<div>
+    
+</div>
 </md-card>
 
-
+<!--
 <md-card>
     <!--natrayan
-  --ssss is {{ssss|json}} -->
-   basket is: {{    post2 | json  }}
+  --ssss is {{ssss|json}}
+   basket is: {{    object3 | json  }} --
+   basket is: {{    sForm.value | json   }}
     
    <hr>
-   <form [formGroup]="sForm" (ngSubmit)="dataPost(sForm.value)" >
+   <!--form [formGroup]="sForm" (ngSubmit)="dataPost(sForm.value)" --
+   <form [formGroup]="sForm" (ngSubmit)="dataPost(sForm.value)">
+       
+          <md-form-field >
+               <input mdInput formControlName="api_key" value={{api_key}} />
+           </md-form-field> 
        
            <md-form-field >
-               <input mdInput formControlName="api_key" value={{api_key}} >
-           </md-form-field>
-       
-           <md-form-field >
-               <input mdInput formControlName="data" value={{post1}} >
+               <input mdInput formControlName="data" value={{ssss2}} />
 
            </md-form-field>
            
-           <button md-raised-button color="primary" >Submit</button>
+           <button md-raised-button color="primary" >Submit to python</button>
    </form>
-   
+
 </md-card>
+
+
+
+
+
+<md-card fxLayout="row" FxLayoutWrap></md-card>
+    <!--form method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform--
+    <form method="post" id="basket-form" action="http://127.0.0.1:8080/nat" #myform>
+        <input  name="api_key" value={{api_key}} />
+        <input  id="basket" name="data" value={{values3}} />
+    </form>
+      
 <button md-raised-button color="primary" onclick="natnat()" >add basket</button>
 <button md-raised-button color="primary" id ="custom-button" (Click)="testes($event)">Submit basket</button>
 <button id="natsss">autoclick</button>
@@ -144,3 +161,5 @@ order works
 <input #someInput type="text"/>
 <button #natbutton (click)="natrayan()">comme</button>
 <button #anabutton (click)="ananthi()">ananti</button>
+</md-card>
+<!-->
