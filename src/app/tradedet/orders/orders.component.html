@@ -26,7 +26,7 @@
 <md-card class="myss">
     <form [formGroup]="rForm" >
         <div fxLayout="coloumn" fxLayoutWrap>
-            <div fxFlex="1 1 auto" ><!--<style="background-color: green"-->
+            <div fxFlex="5 1 auto" ><!--<style="background-color: green"-->
                 <div fxLayout="column" fxLayoutWrap>
                     <div fxLayoutWrap fxLayoutGap="40px"><!--</div> style="background-color: black"-->
                   
@@ -120,25 +120,10 @@
                                             </md-error>
                                         </md-form-field>
                     </div>
-                    <div fxFlex="4 4 auto" style="background-color:blueviolet">
+                    <div fxFlex="4 4 auto"><!--</div> style="background-color:blueviolet">-->
                             <!-- <p>Natrayan optional field rows</p> -->
-                            <p>Natrayan new row</p>
-                    </div>        
-
-                </div>
-            </div>
-            <div fxFlex="2 1 auto" style="background-color: brown">
-                <div>
-<!--                         <md-form-field >
-                                <input type="text" placeholder="portfolio" aria-label="order type" mdInput formControlName="Portfolioname" [mdAutocomplete]="auto">
-                                <md-autocomplete #auto="mdAutocomplete">
-                                  <md-option *ngFor="let portfolio  of portfolios" [value]="portfolio">
-                                        <md-checkbox>{{ portfolio }}</md-checkbox>
-                                  </md-option>  
-                                </md-autocomplete>
-                            </md-form-field> -->
-                          
-                            <md-select multiple="{{true}}" placeholder="Pick" [(ngModel)]="selectedpfs" formControlName="Portfolioname">
+                            <div fxLayout="row" FxLayoutWrap>                       
+                            <md-select multiple="{{true}}" placeholder="Portfolio" [(ngModel)]="selectedpfs" formControlName="Portfolioname">
                                     <md-option *ngFor="let portfolio of portfolios" [value]="portfolio">
                                           {{portfolio}}
                                           </md-option>
@@ -152,15 +137,12 @@
                             </md-chip>
   
                         </md-chip-list>
-                                
-                            
+                        </div>
+                    </div>        
 
-                </div>    
-                <div  style="background-color:chartreuse">
-
-                      
                 </div>
             </div>
+
             
         </div>
         <div fxLayoutAlign="end stretch" style="background-color:aqua">
