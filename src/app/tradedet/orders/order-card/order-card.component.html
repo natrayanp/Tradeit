@@ -1,0 +1,400 @@
+<!--p>
+  order-card works!
+</p-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<md-card >
+  <form [formGroup]="myForm" fxLayout="row" fxLayoutWrap>
+    <md-form-field *ngIf="false">
+        <input type="text" mdInput formControlName="api_key">
+    </md-form-field>
+
+    <div formArrayName="orderlists">
+        <div *ngFor="let orderlist of myForm.controls.orderlists.controls; let i=index" >
+            <div [formGroupName]="i">
+                <md-form-field >
+                    <input type="text" placeholder="Transaction Type" aria-label="Transaction Typee" mdInput formControlName="transaction_type" [mdAutocomplete]="auto1" >
+                    <md-autocomplete #auto1="mdAutocomplete">
+                      <md-option *ngFor="let trantype  of trantypes" [value]="trantype">
+                        {{ trantype }}
+                      </md-option>  
+                    </md-autocomplete>
+                </md-form-field>
+                
+
+            <md-form-field >
+                <input type="text" placeholder="Pick one" aria-label="Portfolioname" mdInput formControlName="Portfolioname" [mdAutocomplete]="auto">
+                <md-autocomplete #auto="mdAutocomplete">
+                    <md-option *ngFor="let pf of pfs" [value]="pf">
+                        {{ pf }}
+                    </md-option>  
+                </md-autocomplete>
+            </md-form-field>
+
+            <md-form-field >
+                    <input mdInput placeholder="exchange" formControlName="exchange" value="NSE">
+                    <md-error *ngIf="!myForm.controls.orderlists.controls[i].controls.exchange.valid">
+                        exchange is <strong>required</strong>
+                    </md-error>
+            </md-form-field>
+
+
+            <!-- Trading Symbol will have the exchange --
+            <md-form-field >
+                    <input mdInput type="text" placeholder="tradingsymbol" formControlName="tradingsymbol" >
+                    <md-error *ngIf="!myForm.controls.orderlists.controls[i].controls.tradingsymbol.valid">
+                        tradingsymbol is <strong>required</strong>
+                    </md-error>
+            </md-form-field>
+
+
+            <md-form-field >
+                <input mdInput placeholder="quantity" formControlName="quantity" value="10">
+                <md-error *ngIf="!myForm.controls.orderlists.controls[i].controls.quantity.valid">
+                    quantity is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+       
+                
+            <fieldset fxFlex="0 0 200px">
+                    <legend>ordertype</legend>
+            <md-radio-group formControlName="order_type" >
+                
+                <md-radio-button *ngFor="let ordertype1 of ordertypes" [value]="ordertype1" >
+                        {{ordertype1}}
+                </md-radio-button>
+            
+            </md-radio-group>
+        </fieldset>
+<!-- pending :  1) Order type radio button (market,limit, etc...) 
+                2) Product radion button
+                3) Disclosed Quantity
+                4) Validity Radio button
+
+
+            --
+
+            <md-form-field >
+                    <input mdInput placeholder="price" formControlName="price">
+                    <md-error *ngIf="!myForm.controls.orderlists.controls[i].controls.price.valid">
+                        price is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+
+                <md-form-field >
+                        <input mdInput placeholder="trigger price" formControlName="trigger_price">
+                        <md-error *ngIf="!myForm.controls.orderlists.controls[i].controls.trigger_price.valid">
+                            trigger price is <strong>required</strong>
+                        </md-error>
+                    </md-form-field>
+              
+            </div>
+        </div> 
+    </div>
+  </form>
+</md-card> -->
+
+<!--         
+            <!--
+                #This is to be replaced with breads
+
+        
+            #This is as part of the stock code selection-->
+<!--                 <md-form-field >
+                    <input type="text" placeholder="Transaction Type" aria-label="Transaction Typee" mdInput formControlName="transaction_type" [mdAutocomplete]="auto1" >
+                    <md-autocomplete #auto1="mdAutocomplete">
+                      <md-option *ngFor="let trantype  of trantypes" [value]="trantype">
+                        {{ trantype }}
+                      </md-option>  
+                    </md-autocomplete>
+                </md-form-field> -->
+        
+              <!--  #This is as part of the stock code selection --><!-- 
+              <md-form-field >
+                    <input mdInput placeholder="exchange" formControlName="exchange" value="NSE">
+                    <md-error *ngIf="!rForm.controls['exchange'].valid">
+                        exchange is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+        
+            <md-form-field >
+                            <input mdInput placeholder="tradingsymbol" formControlName="tradingsymbol" value="ITC">
+                            <md-error *ngIf="!rForm.controls['tradingsymbol'].valid">
+                                tradingsymbol is <strong>required</strong>
+                            </md-error>
+                        </md-form-field>
+        
+        
+        
+        
+            
+        
+        
+        
+                        <md-form-field >
+                                <input type="text" placeholder="orderorder type" aria-label="order type" mdInput formControlName="order_type" [mdAutocomplete]="auto">
+                                <md-autocomplete #auto="mdAutocomplete">
+                                  <md-option *ngFor="let ordertype  of ordertypes" [value]="ordertype">
+                                    {{ ordertype }}
+                                  </md-option>  
+                                </md-autocomplete>
+                            </md-form-field>
+                          
+        
+        
+        
+        
+            <md-form-field >
+                <input mdInput placeholder="quantity" formControlName="quantity" value="10">
+                <md-error *ngIf="!rForm.controls['quantity'].valid">
+                    quantity is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+        
+            <md-form-field >
+                <input mdInput placeholder="product" formControlName="product">
+                <md-error *ngIf="!rForm.controls['product'].valid">
+                    product is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+        
+            <md-form-field >
+                <input mdInput placeholder="price" formControlName="price">
+                <md-error *ngIf="!rForm.controls['price'].valid">
+                    price is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+        
+            <md-form-field >
+                <input mdInput placeholder="trigger price" formControlName="trigger_price">
+                <md-error *ngIf="!rForm.controls['trigger_price'].valid">
+                    trigger price is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+        
+            <md-form-field >
+                <input mdInput placeholder="disclosed quantity" formControlName="disclosed_quantity">
+                <md-error *ngIf="!rForm.controls['disclosed_quantity'].valid">
+                    disclosed quantity is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+        
+            <md-form-field >
+                <input mdInput placeholder="validity" formControlName="validity">
+                <md-error *ngIf="!rForm.controls['validity'].valid">
+                    validity is <strong>required</strong>
+                </md-error>
+            </md-form-field>
+        
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</md-card>
+
+
+
+
+
+
+
+
+    
+
+<!-- 
+            
+            <md-card fxLayout="row" FxLayoutWrap >
+            <div>
+            <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" fxFlex>
+            
+                <!--
+                    #This is to be replaced with breads
+                  <md-form-field >
+                    <input type="text" placeholder="Pick one" aria-label="Number" mdInput formControlName="Portfolioname" [mdAutocomplete]="auto">
+                    <md-autocomplete #auto="mdAutocomplete">
+                      <md-option *ngFor="let option of options" [value]="option">
+                        {{ option }}
+                      </md-option>  
+                    </md-autocomplete>
+                </md-form-field>
+            
+                #This is as part of the stock code selection-->
+<!--                 <md-form-field >
+                        <input type="text" placeholder="Transaction Type" aria-label="Transaction Typee" mdInput formControlName="transaction_type" [mdAutocomplete]="auto1" >
+                        <md-autocomplete #auto1="mdAutocomplete">
+                          <md-option *ngFor="let trantype  of trantypes" [value]="trantype">
+                            {{ trantype }}
+                          </md-option>  
+                        </md-autocomplete>
+                    </md-form-field> -->
+            
+                  <!--  #This is as part of the stock code selection --><!-- 
+                  <md-form-field >
+                        <input mdInput placeholder="exchange" formControlName="exchange" value="NSE">
+                        <md-error *ngIf="!rForm.controls['exchange'].valid">
+                            exchange is <strong>required</strong>
+                        </md-error>
+                    </md-form-field>
+            
+                <md-form-field >
+                                <input mdInput placeholder="tradingsymbol" formControlName="tradingsymbol" value="ITC">
+                                <md-error *ngIf="!rForm.controls['tradingsymbol'].valid">
+                                    tradingsymbol is <strong>required</strong>
+                                </md-error>
+                            </md-form-field>
+            
+            
+            
+            
+                
+            
+            
+            
+                            <md-form-field >
+                                    <input type="text" placeholder="order type" aria-label="order type" mdInput formControlName="order_type" [mdAutocomplete]="auto">
+                                    <md-autocomplete #auto="mdAutocomplete">
+                                      <md-option *ngFor="let ordertype  of ordertypes" [value]="ordertype">
+                                        {{ ordertype }}
+                                      </md-option>  
+                                    </md-autocomplete>
+                                </md-form-field>
+                              
+            
+            
+            
+            
+                <md-form-field >
+                    <input mdInput placeholder="quantity" formControlName="quantity" value="10">
+                    <md-error *ngIf="!rForm.controls['quantity'].valid">
+                        quantity is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+            
+                <md-form-field >
+                    <input mdInput placeholder="product" formControlName="product">
+                    <md-error *ngIf="!rForm.controls['product'].valid">
+                        product is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+            
+                <md-form-field >
+                    <input mdInput placeholder="price" formControlName="price">
+                    <md-error *ngIf="!rForm.controls['price'].valid">
+                        price is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+            
+                <md-form-field >
+                    <input mdInput placeholder="trigger price" formControlName="trigger_price">
+                    <md-error *ngIf="!rForm.controls['trigger_price'].valid">
+                        trigger price is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+            
+                <md-form-field >
+                    <input mdInput placeholder="disclosed quantity" formControlName="disclosed_quantity">
+                    <md-error *ngIf="!rForm.controls['disclosed_quantity'].valid">
+                        disclosed quantity is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+            
+                <md-form-field >
+                    <input mdInput placeholder="validity" formControlName="validity">
+                    <md-error *ngIf="!rForm.controls['validity'].valid">
+                        validity is <strong>required</strong>
+                    </md-error>
+                </md-form-field>
+            
+            </form>
+            </div>
+            <div>
+                
+            </div>
+            </md-card>
+                    </md-step>
+    
+    
+    <md-step label="Step 1">
+      Content 2
+    </md-step>
+</md-horizontal-stepper> -->
+
+
+
+<!--
+order works
+-->
+
+
+<!--
+<md-card>
+<!--natrayan
+--ssss is {{ssss|json}}
+basket is: {{    object3 | json  }} --
+basket is: {{    sForm.value | json   }}
+
+<hr>
+<!--form [formGroup]="sForm" (ngSubmit)="dataPost(sForm.value)" --
+<form [formGroup]="sForm" (ngSubmit)="dataPost(sForm.value)">
+   
+      <md-form-field >
+           <input mdInput formControlName="api_key" value={{api_key}} />
+       </md-form-field> 
+   
+       <md-form-field >
+           <input mdInput formControlName="data" value={{ssss2}} />
+
+       </md-form-field>
+       
+       <button md-raised-button color="primary" >Submit to python</button>
+</form>
+
+</md-card>
+
+
+
+
+
+<md-card fxLayout="row" FxLayoutWrap></md-card>
+<!--form method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform--
+<form method="post" id="basket-form" action="http://127.0.0.1:8080/nat" #myform>
+    <input  name="api_key" value={{api_key}} />
+    <input  id="basket" name="data" value={{values3}} />
+</form>
+  
+<button md-raised-button color="primary" onclick="natnat()" >add basket</button>
+<button md-raised-button color="primary" id ="custom-button" (Click)="testes($event)">Submit basket</button>
+<button id="natsss">autoclick</button>
+
+<input #someInput type="text"/>
+<button #natbutton (click)="natrayan()">comme</button>
+<button #anabutton (click)="ananthi()">ananti</button>
+</md-card>
+--
+ -->

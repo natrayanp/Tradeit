@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MdInputModule } from '@angular/material';
 
 import { IUser } from '../User-details';
@@ -15,11 +15,11 @@ export class UserCardComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.edittedUser = this.user;
+   // this.edittedUser = this.user;
   }
 
-  @Input() user: IUser;
-  edittedUser: IUser;
+  @Input() edittedUser: IUser;
+  //edittedUser: IUser;
 
   
 

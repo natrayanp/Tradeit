@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Directive, AnimationPlayer} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {HttpHeaders,HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 
@@ -13,7 +13,60 @@ import {HttpHeaders,HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '
 
 export class OrdersComponent implements OnInit {
 
+ /*  api_key :string = 'uptxfbd1y845rxva';
+  values:string='[{"tradingsymbol": "INFY","exchange": "NSE","transaction_type": "BUY","order_type": "MARKET","quantity": 10,"readonly": "true"}]';
+  values1 = JSON.parse(this.values);
+  values3=JSON.stringify(this.values1); */
 
+  public rForm: FormGroup;
+  ordertypes : string[]= ['MKT','LMT','SL','SL-M'];
+  products: string[]=['CNC','MS'];
+  ordervalidities: string[]=['DAY','IOC'];
+  trantypes : string[]=['BUY','SELL'];
+
+  constructor(private fb: FormBuilder, private renderer: Renderer2) { 
+    this.rForm = fb.group({
+      
+      'Portfolioname':[null,Validators.required],
+      'tradingsymbol':[null,Validators.required],
+      'exchange':[null,Validators.required],
+      'transaction_type':[null,Validators.required],
+      'order_type':[null,Validators.required],
+      'quantity':[null,Validators.required],
+      'product':[null,Validators.required],
+      'price':[null,Validators.required],
+      'trigger_price':[null,Validators.required],
+      'disclosed_quantity':[null,Validators.required],
+      'validity':[null,Validators.required],      
+      'readonly':['false',Validators.required]
+       });
+  }
+
+  @ViewChild('someInput') someInput: ElementRef;
+  @ViewChild('natbutton') natbutton: ElementRef;
+  @ViewChild('anabutton') anabutton: ElementRef;
+  @ViewChild('myform') myform: ElementRef;
+
+  natrayan() {
+    //this.someInput.nativeElement.value = "Anchovies!";
+    this.renderer.setAttribute(this.someInput.nativeElement,"value","Anchovies!");
+    //this.renderer.setProperty(this.myform.nativeElement,"submit",true);
+    this.myform.nativeElement.submit();
+  }
+
+ngOnInit() {
+
+}
+
+
+
+
+
+
+
+}
+
+/*
 
   
   
@@ -84,6 +137,8 @@ export class OrdersComponent implements OnInit {
   data1:any;
   First:number=1;
 
+  rFormarry:FormGroup[];
+
   constructor(private fb: FormBuilder,private http:HttpClient, private renderer: Renderer2) { 
     
     this.rForm = fb.group({
@@ -101,10 +156,11 @@ export class OrdersComponent implements OnInit {
       'validity':[null,Validators.required],      
       'readonly':['false',Validators.required]
        });
-/*    this.sForm = fb.group({
+       this.rFormarry.push(this.rForm);
+   this.sForm = fb.group({
       'api_key':[null,Validators.required],
       'data':[null,Validators.required]
-    });*/
+    });
    
   }
   values:string='[{"tradingsymbol": "INFY","exchange": "NSE","transaction_type": "BUY","order_type": "MARKET","quantity": 10,"readonly": "true"}]';
@@ -124,7 +180,10 @@ export class OrdersComponent implements OnInit {
    }
 
 
-
+   addStocklist(){
+      
+    this.rFormarry.push(this.rForm);
+   }
 
 
   addPost(ssss1){
@@ -165,11 +224,11 @@ export class OrdersComponent implements OnInit {
     })
     this.object3.push(this.ssss);
     this.lengths='['+this.object3+']';
-   // this.lengths='[{"api_key":"uptxfbd1y845rxva","data":'+this.object3+'}]';*/
+   // this.lengths='[{"api_key":"uptxfbd1y845rxva","data":'+this.object3+'}]';
   }
   
-  dataPost(data1){
-    console.log(data1);
+/*   dataPost(data1){
+    console.log(data1); */
     /*var body =  this.ssss2;
     var headers= new HttpHeaders();
     console.log(body);
@@ -178,10 +237,10 @@ export class OrdersComponent implements OnInit {
     .post('http://127.0.0.1:8080/nat',data1,{ headers: headers }) 
     .subscribe();*/
 
-    this.http
+/*     this.http
     .post('https://w98vuly6s7.execute-api.ap-southeast-1.amazonaws.com/dev/dev',data1) 
     .subscribe();
-
+ */
 
     /*
     this.lengths='{"api_key":"'+ this.api_key+'","data":'+this.ssss1+'}';
@@ -219,7 +278,8 @@ export class OrdersComponent implements OnInit {
 
     /*'https://kite.trade/connect/basket'
     'http://webhook.site/a1d7cec2-1ffa-4d74-847d-18c593ff2053'
-    'http://mockbin.org/bin/580d4db0-4475-45ce-8bbc-3da53a7a9072?foo=bar&foo=baz'*/
+    'http://mockbin.org/bin/580d4db0-4475-45ce-8bbc-3da53a7a9072?foo=bar&foo=baz'
  }
 
-}
+
+}*/

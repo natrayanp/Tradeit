@@ -14,6 +14,8 @@ import { MdCard } from '@angular/material';
 import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import {MdSlideToggleModule} from '@angular/material';
 import {MatStepperModule} from '@angular/material';
+import {MdExpansionModule} from '@angular/material';
+import {MdRadioModule} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,6 +36,7 @@ import { FooterComponent } from './weblayout/footer/footer.component';
 import { BodyComponent } from './weblayout/body/body.component';
 import { UserCardComponent } from './tradedet/users/user-card/user-card.component';
 import { UserListComponent } from './tradedet/users/user-list/user-list.component';
+import { OrderCardComponent } from './tradedet/orders/order-card/order-card.component';
 //import {InterceptorModule} from './app.interceptor.module';
 
 
@@ -50,7 +53,8 @@ import { UserListComponent } from './tradedet/users/user-list/user-list.componen
     FooterComponent,
     BodyComponent,
     UserCardComponent,
-    UserListComponent
+    UserListComponent,
+    OrderCardComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,8 @@ import { UserListComponent } from './tradedet/users/user-list/user-list.componen
     ReactiveFormsModule,
     MdSlideToggleModule,
     MatStepperModule,
+    MdExpansionModule,
+    MdRadioModule,
  //   InterceptorModule,
     RouterModule.forRoot(ROUTES)       
   ],
