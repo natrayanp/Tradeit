@@ -23,6 +23,8 @@ export class OrdersComponent implements OnInit {
   products: string[]=['CNC','MS'];
   ordervalidities: string[]=['DAY','IOC'];
   trantypes : string[]=['BUY','SELL'];
+  portfolios: string[]=['Natrayans','Nirudhis','Ananthis','Nidha','Jayakodi','Palaniappan','Arun'];
+  selectedpfs:string[];
 
   constructor(private fb: FormBuilder, private renderer: Renderer2) { 
     this.rForm = fb.group({
@@ -59,7 +61,13 @@ ngOnInit() {
 }
 
 
+remove(selectedpf: string): void {
+  let index = this.portfolios.indexOf(selectedpf);
 
+  if (index >= 0) {
+    this.portfolios.splice(index, 1);
+  }
+}
 
 
 

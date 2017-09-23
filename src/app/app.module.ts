@@ -16,6 +16,9 @@ import {MdSlideToggleModule} from '@angular/material';
 import {MatStepperModule} from '@angular/material';
 import {MdExpansionModule} from '@angular/material';
 import {MdRadioModule} from '@angular/material';
+import {MdSelectModule} from '@angular/material';
+import {MdChipsModule} from '@angular/material';
+import {MdIconModule} from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -74,6 +77,9 @@ import { OrderCardComponent } from './tradedet/orders/order-card/order-card.comp
     MatStepperModule,
     MdExpansionModule,
     MdRadioModule,
+    MdSelectModule,
+    MdChipsModule,
+    MdIconModule,
  //   InterceptorModule,
     RouterModule.forRoot(ROUTES)       
   ],

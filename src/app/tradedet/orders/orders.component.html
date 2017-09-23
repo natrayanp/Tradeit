@@ -129,17 +129,36 @@
             </div>
             <div fxFlex="2 1 auto" style="background-color: brown">
                 <div>
-                <md-radio-group formControlName="transaction_type">
+<!--                         <md-form-field >
+                                <input type="text" placeholder="portfolio" aria-label="order type" mdInput formControlName="Portfolioname" [mdAutocomplete]="auto">
+                                <md-autocomplete #auto="mdAutocomplete">
+                                  <md-option *ngFor="let portfolio  of portfolios" [value]="portfolio">
+                                        <md-checkbox>{{ portfolio }}</md-checkbox>
+                                  </md-option>  
+                                </md-autocomplete>
+                            </md-form-field> -->
+                          
+                            <md-select multiple="{{true}}" placeholder="Pick" [(ngModel)]="selectedpfs" formControlName="Portfolioname">
+                                    <md-option *ngFor="let portfolio of portfolios" [value]="portfolio">
+                                          {{portfolio}}
+                                          </md-option>
+                                        
+                                  </md-select>
+
+                      <md-chip-list>
+                            <md-chip *ngFor = "let selectedpf of selectedpfs" [selectable]="true" [removable]="true" (remove)="remove(selectedpf)">
+                                {{selectedpf}}
+                                <md-icon mdChipRemove>x</md-icon>
+                            </md-chip>
+  
+                        </md-chip-list>
+                                
                             
-                            <md-radio-button *ngFor="let trantype of trantypes" [value]="trantype" >
-                                    {{trantype}}
-                            </md-radio-button>
-                        
-                    </md-radio-group>  
+
                 </div>    
-                <div fxLayoutWrap style="background-color:chartreuse">
-                      <p>Chips row</p>  
-                      <p>Chips row2</p>  
+                <div  style="background-color:chartreuse">
+
+                      
                 </div>
             </div>
             
