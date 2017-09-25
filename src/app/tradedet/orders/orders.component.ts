@@ -18,13 +18,16 @@ export class OrdersComponent implements OnInit {
   values1 = JSON.parse(this.values);
   values3=JSON.stringify(this.values1); */
 
-  public rForm: FormGroup;
+  public rForm : FormGroup;
+  sForm: FormGroup;
   ordertypes : string[]= ['MKT','LMT','SL','SL-M'];
   products: string[]=['CNC','MS'];
   ordervalidities: string[]=['DAY','IOC'];
   trantypes : string[]=['BUY','SELL'];
   portfolios: string[]=['Natrayans','Nirudhis','Ananthis','Nidha','Jayakodi','Palaniappan','Arun'];
   selectedpfs:string[];
+  selectedpfscpy:string[];
+  rform : any;
 
   constructor(private fb: FormBuilder, private renderer: Renderer2) { 
     this.rForm = fb.group({
@@ -42,6 +45,8 @@ export class OrdersComponent implements OnInit {
       'validity':[null,Validators.required],      
       'readonly':['false',Validators.required]
        });
+
+
   }
 
   @ViewChild('someInput') someInput: ElementRef;
@@ -61,15 +66,23 @@ ngOnInit() {
 }
 
 
-remove(selectedpf: string): void {
-  let index = this.portfolios.indexOf(selectedpf);
+removechip(closechipval: string): void {
+  this.selectedpfscpy = this.selectedpfs;
+  let index = this.selectedpfs.indexOf(closechipval);
 
   if (index >= 0) {
-    this.portfolios.splice(index, 1);
+    this.selectedpfscpy.splice(index, 1);
+    this.selectedpfs=this.selectedpfscpy.slice(0);
+    
   }
 }
 
+addStocklist(rform){
+console.log(rform);
+delete rform.Portfolioname;
+console.log(rform);
 
+}
 
 
 }

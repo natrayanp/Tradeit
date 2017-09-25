@@ -29,7 +29,7 @@ export class OrderCardComponent implements OnInit {
 
 initorderlists() {
   return this.fb.group({  
-    'Portfolioname':[null,Validators.required],
+   // 'Portfolioname':[null,Validators.required],
     'tradingsymbol':[null,Validators.required],
     'exchange':[null,Validators.required],
     'transaction_type':[null,Validators.required],

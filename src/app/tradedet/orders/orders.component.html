@@ -20,7 +20,7 @@
 
 
 <md-toolbar color="primary">
-        <button  md-raised-button color="accent" (click)="addStocklist()">+ Add Stocks</button>        
+          
 </md-toolbar>
 
 <md-card class="myss">
@@ -122,6 +122,7 @@
                     </div>
                     <div fxFlex="4 4 auto"><!--</div> style="background-color:blueviolet">-->
                             <!-- <p>Natrayan optional field rows</p> -->
+                        <fieldset>
                             <div fxLayout="row" FxLayoutWrap>                       
                             <md-select multiple="{{true}}" placeholder="Portfolio" [(ngModel)]="selectedpfs" formControlName="Portfolioname">
                                     <md-option *ngFor="let portfolio of portfolios" [value]="portfolio">
@@ -131,13 +132,15 @@
                                   </md-select>
 
                       <md-chip-list>
-                            <md-chip *ngFor = "let selectedpf of selectedpfs" [selectable]="true" [removable]="true" (remove)="remove(selectedpf)">
+                            <md-chip *ngFor = "let selectedpf of selectedpfs" [selectable]="true" [removable]="true" (remove)="removechip(selectedpf)">
                                 {{selectedpf}}
                                 <md-icon mdChipRemove>x</md-icon>
                             </md-chip>
   
                         </md-chip-list>
+                    
                         </div>
+                    </fieldset>
                     </div>        
 
                 </div>
@@ -146,8 +149,11 @@
             
         </div>
         <div fxLayoutAlign="end stretch" style="background-color:aqua">
-            <p  >Button Row</p>
+            <!-- <p  >Additonal Row</p> -->
         </div>
-
+        
+        <div fxLayoutAlign="center stretch"> 
+            <button  md-raised-button color="accent" (click)="addStocklist(rForm.value)">+ Add Stocks</button>    
+        </div>
     </form>
 </md-card>
