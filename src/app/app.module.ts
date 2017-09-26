@@ -18,7 +18,9 @@ import {MdExpansionModule} from '@angular/material';
 import {MdRadioModule} from '@angular/material';
 import {MdSelectModule} from '@angular/material';
 import {MdChipsModule} from '@angular/material';
-import {MdIconModule} from '@angular/material';
+import {MatIconModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material';
+
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -79,7 +81,8 @@ import { OrderCardComponent } from './tradedet/orders/order-card/order-card.comp
     MdRadioModule,
     MdSelectModule,
     MdChipsModule,
-    MdIconModule,
+    MatIconModule,
+    MatTabsModule,
  //   InterceptorModule,
     RouterModule.forRoot(ROUTES)       
   ],

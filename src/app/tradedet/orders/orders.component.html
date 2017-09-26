@@ -24,7 +24,7 @@
 </md-toolbar>
 
 <md-card class="myss">
-    <form [formGroup]="rForm" >
+    <form [formGroup]="rForm" (ngSubmit)="addStocklist(rForm.value)">
         <div fxLayout="coloumn" fxLayoutWrap>
             <div fxFlex="5 1 auto" ><!--<style="background-color: green"-->
                 <div fxLayout="column" fxLayoutWrap>
@@ -132,9 +132,9 @@
                                   </md-select>
 
                       <md-chip-list>
-                            <md-chip *ngFor = "let selectedpf of selectedpfs" [selectable]="true" [removable]="true" (remove)="removechip(selectedpf)">
+                            <md-chip *ngFor = "let selectedpf of selectedpfs" [selectable]="true" [removable]="true" (remove)="removechip(selectedpf)"  color="accent" >
                                 {{selectedpf}}
-                                <md-icon mdChipRemove>x</md-icon>
+                                <md-icon mdChipRemove>cancel</md-icon>
                             </md-chip>
   
                         </md-chip-list>
@@ -153,7 +153,18 @@
         </div>
         
         <div fxLayoutAlign="center stretch"> 
-            <button  md-raised-button color="accent" (click)="addStocklist(rForm.value)">+ Add Stocks</button>    
+            <button  md-raised-button color="accent">+ Add Stocks</button>    
         </div>
     </form>
-</md-card>
+
+<md-card>
+
+
+
+
+<md-tab-group>
+    <md-tab label="Portfolio wise order">{{myjsonporttran | json}}</md-tab>
+    <md-tab label="stock wise order">{{myjsontran | json}}</md-tab>
+  </md-tab-group>
+
+

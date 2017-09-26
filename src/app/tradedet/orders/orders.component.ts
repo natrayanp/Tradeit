@@ -28,6 +28,12 @@ export class OrdersComponent implements OnInit {
   selectedpfs:string[];
   selectedpfscpy:string[];
   rform : any;
+  myjsoncpy: any;
+  myjsonpf : any[];
+  myjsontran = [];
+  myjsonporttran =[{portfolio:null ,data: []}];
+  matchindxo:number;
+
 
   constructor(private fb: FormBuilder, private renderer: Renderer2) { 
     this.rForm = fb.group({
@@ -77,19 +83,100 @@ removechip(closechipval: string): void {
   }
 }
 
-addStocklist(rform){
-console.log(rform);
-delete rform.Portfolioname;
-console.log(rform);
+ addStocklist(rform){
+  console.log(rform);
+  this.myjsoncpy = null;
+  this.myjsoncpy=rform;
+  //console.log(JSON.stringify(rform));
+  //console.log(this.myjsoncpy);
+  this.myjsonpf=this.myjsoncpy.Portfolioname;
+  //console.log(this.myjsoncpy.Portfolioname);
+  delete this.myjsoncpy.Portfolioname;
+
+  console.log("HERE" + JSON.stringify(this.myjsoncpy));
+  var i=0;
+  //Code for portfolio wise
+        var index; 
+
+        for(i=0;this.myjsonpf.length>i;i+=1){
+          var pfmatchindex=this.hastag(this.myjsonpf[i]);
+          console.log(pfmatchindex);
+
+
+
+          if (pfmatchindex == -1){
+            index = this.myjsonporttran.length-1;
+            if(index ==0){
+                if(this.myjsonporttran[index].portfolio==null){
+                  index=0;
+                }
+                else{
+                  index=index+1;
+                  this.myjsonporttran[index]={portfolio:null ,data: []};
+                }
+            }else{
+                index=index+1;
+                this.myjsonporttran[index]={portfolio:null ,data: []};      
+            }
+            this.myjsonporttran[index].portfolio=this.myjsonpf[i];
+            this.myjsonporttran[index].data[0]=this.myjsoncpy;       
+          }
+
+          if(pfmatchindex>=0){               
+            //var dataindex=this.myjsonporttran[pfmatchindex].data.length-1;        
+            this.myjsonporttran[pfmatchindex].data.push(this.myjsoncpy);
+          }
+
+        }
+        
+    //Code for Stock wise
+    ;
+      if(this.matchindxo = this.hasmatch(this.myjsoncpy.tradingsymbol)) { 
+          //logic to add the share quantity to the same list
+          this.myjsontran[this.matchindxo].quantity += this.myjsoncpy.quantity;
+      }else{
+        this.myjsontran.push(this.myjsoncpy);
+      };
+
+ };
+
+ hasmatch(tradsym : string){
+  var l =null;
+  var matchindx:number;
+  matchindx=-1;
+  for (l=0;this.myjsontran.length>l;l+=1){
+    if(this.myjsontran[l].tradingsymbol==tradsym){
+      matchindx=l;
+    }
+  }
+//loop through all the elements and see if they match
+  var result = Object.keys(this.myjsoncpy);
+  if (matchindx > -1){
+  for(l=0;result.length>l;l+=1){
+    if(this.myjsontran[matchindx][result[l]]!=this.myjsoncpy[result[l]])
+    {
+      matchindx=-1;
+      return matchindx;
+    }
+  }
+  return matchindx;
+} 
+
+ };
+
+ hastag(tagname : string){
+  var k =null;
+  for (k=0;this.myjsonporttran.length>k;k+=1){
+    if(this.myjsonporttran[k].portfolio==tagname){
+        return k;
+    }
+  }
+  return -1;
+};
 
 }
 
-
-}
-
-/*
-
-  
+  /*
   
  ngOnInit() {
   
