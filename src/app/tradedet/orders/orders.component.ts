@@ -174,6 +174,11 @@ removechip(closechipval: string): void {
   return -1;
 };
 
+removeitem(pffs){
+  console.log(pffs);
+}
+
+
 }
 
   /*

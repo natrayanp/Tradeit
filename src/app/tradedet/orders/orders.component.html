@@ -162,9 +162,77 @@
 
 
 
-<md-tab-group>
-    <md-tab label="Portfolio wise order">{{myjsonporttran | json}}</md-tab>
-    <md-tab label="stock wise order">{{myjsontran | json}}</md-tab>
-  </md-tab-group>
+        <md-tab-group>
+                <md-tab label="Portfolio wise order">
+                    <div >
+                    <md-expansion-panel *ngFor="let pf of myjsonporttran">
+                            <md-expansion-panel-header>
+                            <md-panel-title>
+                            {{pf.portfolio}}
+                            </md-panel-title>
+                            <md-panel-description>
+                            Type your name and age
+                            </md-panel-description>
+                            </md-expansion-panel-header>
+                            
+                            
+                                    <table class="responsive-table">
+                                      <caption></caption>
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">tradingsymbol</th>
+                                          <th scope="col">exchange</th>
+                                          <th scope="col">transaction_type</th>
+                                          <th scope="col">order_type</th>
+                                          <th scope="col">quantity</th>
+                                          <th scope="col">product</th>
+                                          <th scope="col">price</th>
+                                          <th scope="col">trigger_price</th>
+                                          <th scope="col">disclosed_quantity</th>
+                                          <th scope="col">validity</th>
+                                          <th scope="col">Edit/Remove</th>
+                                          
+                                        </tr>
+                                      </thead>
+                                      <tfoot>
+                                      </tfoot>
+                                      <tbody>
+                                        
+                                      <tr *ngFor="let data of pf.data">
+                                          <td scope="row">{{data.tradingsymbol}}</td>
+                                          <td data-title="exchange">{{data.exchange}}</td>
+                                          <td data-title="transaction_type">{{data.transaction_type}}</td>
+                                          <td data-title="order_type">{{data.order_type}}</td>
+                                          <td data-title="quantity">{{data.quantity}}</td>
+                                          <td data-title="product">{{data.product}}</td>
+                                          <td data-title="price">{{data.price}}</td>
+                                          <td data-title="trigger_price">{{data.trigger_price}}</td>
+                                          <td data-title="disclosed_quantity">{{data.disclosed_quantity}}</td>
+                                          <td data-title="validity">{{data.validity}}</td>
+                                          <td data-title="Edit/Remove">
+                                            <button md-button class="btnclass">
+                                                <md-icon (click)=removeitem(data)>cancel</md-icon>
+                                            </button>
+                                            <!--button md-button class="btnclass"-->
+                                                    <md-icon (click)=edititem(data)>edit</md-icon>
+                                                <!--/button-->
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  
+                                
+                        </md-expansion-panel>                  
+                    </div>    
+
+                    
+                    
+                    
+                </md-tab>
+            
+            
+            
+                <md-tab label="stock wise order">{{myjsontran | json}}</md-tab>
+              </md-tab-group>
 
 
