@@ -1,11 +1,29 @@
 <!--
 Toolbarworks
 -->
-<md-toolbar  color="primary" fxLayout="row" class="fixed-header mat-elevation-z4" >
-    <div fxFlex.xs="grow" fxFlex.gt-xs="140px">
-        <span> Logo </span>          
+<md-toolbar  color="primary" class="fixed-header mat-elevation-z4" >
+    <div fxFlex="1 1 100%" fxFlex.gt-xs="1 1 250px" fxFlexFill  fxLayoutAlign="start center">nat</div>
+    
+    <div fxFlex="1 1 auto" fxFlexFill fxshow  fxHide.xs="true" fxLayoutAlign="end center" >
+    
+    <a type ="button" md-icon-button routerLink="/home/login" routerLinkActive="active" style="margin-right:10px;" >Login <span>&nbsp;</span><md-icon >lock</md-icon></a>
+  
+    
     </div>
-    <div fxshow  fxHide.xs="true" fxFlex="grow">
-        <span>Toolbar Header</span>                         
-    </div>
+    
 </md-toolbar> 
+
+<!--
+
+            <div fxFlex.xs="1 1 100%" fxFlex.gt-xs="1 1 140px" fxFlexFill style="background-color: white; min-width:100%" >
+
+                <span > Logo </span>          
+
+        </div>
+        <div fxshow  fxHide.xs="true" fxLayoutAlign="start end" style="background-color: yellow">
+                <span fxFlexFill>Toolbar Header</span>                                                 
+                <button md-button fxFlexAlign="end start">Login</button>
+            
+        </div>
+
+    -->

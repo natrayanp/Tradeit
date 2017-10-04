@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+lc:string;
   constructor() { }
 
   ngOnInit() {
+    this.lc=JSON.stringify(localStorage.getItem("testObjectchd"));
   }
 
 }

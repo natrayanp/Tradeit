@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
+var KiteConnect;
+
 @Component({
   selector: 'app-order-card',
   templateUrl: './order-card.component.html',
@@ -9,7 +11,9 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 export class OrderCardComponent implements OnInit {
   public myForm: FormGroup;
-
+  kite :any;
+  result:any;
+  
   pfs: string[]=['Nirudhis','Natrayans'];
   trantypes : string[]=['BUY','SELL'];
   ordertypes : string[]= ['MARKET','LIMIT','STOPELOSS','STOPLOSSLIMIT'];
@@ -24,7 +28,23 @@ export class OrderCardComponent implements OnInit {
           this.initorderlists(),
       ])
   });
-  }
+  this.kite = new KiteConnect("uptxfbd1y845rxva");
+  
+    this.kite.add({
+      "exchange": "NSE",
+      "tradingsymbol": "INFY",
+      "quantity": 5,
+      "transaction_type": "BUY",
+      "order_type": "MARKET"
+  });
+  
+  console.log(this.kite.get());
+  console.log(this.kite.count());
+}
+
+  
+  
+
 
 
 initorderlists() {

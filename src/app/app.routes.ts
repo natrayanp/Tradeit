@@ -5,19 +5,26 @@ import { DashboardComponent } from './tradedet/dashboard/dashboard.component';
 import { OrdersComponent } from './tradedet/orders/orders.component';
 import { WeblayoutComponent } from './weblayout/weblayout.component';
 import { UserCardComponent } from './tradedet/users/user-card/user-card.component';
+import { OrderCardComponent } from './tradedet/orders/order-card/order-card.component';
 import { UserListComponent } from './tradedet/users/user-list/user-list.component';
+import { LoginComponent } from './home/login/login.component';
+import { LoginchkComponent } from './home/loginchk/loginchk.component';
+
 
 export const ROUTES: Routes = [
   
-  { path: 'home',    component: HomeComponent },
+  { path: 'test',  component: OrderCardComponent },  
+  { path: 'home',    component: HomeComponent, children: [
+    { path: 'login',  component: LoginComponent }    
+   ]},
   { path: 'dashboard',  component: DashboardComponent, children: [
-  { path: 'orders',  component: OrdersComponent },
-  { path: 'users',  component: UserListComponent },
+    { path: 'orders',  component: OrdersComponent },
+    { path: 'users',  component: UserListComponent },
   ]  
   },
+  { path: 'authchk',  component: LoginchkComponent },
   
-    
-  { path: '',      component: OrdersComponent }
+  { path: '',      component: HomeComponent }
   
 ];
 

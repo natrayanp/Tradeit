@@ -21,7 +21,7 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": ["/home/natrayan/Desktop/Test/publisher.js"],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

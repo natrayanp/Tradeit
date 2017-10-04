@@ -1,0 +1,28 @@
+<p>
+  login works!  
+</p>
+<div fxLayoutAlign="center" fxLayoutWrap>
+<md-card class="myss1">
+    <button md-raised-button (click)="openpop()"> KiteLogin </button>
+
+    <form [formGroup]="loginForm" (ngSubmit)="userlogin(loginForm.value)">
+
+        <md-form-field>
+            <input mdInput placeholder="username" formControlName="username" >
+            <md-error *ngIf="!loginForm.controls['username'].valid">
+                exchange is <strong>required</strong>
+            </md-error>
+        </md-form-field >
+
+        <md-form-field>
+            <input mdInput type="password" placeholder="password" formControlName="password" >
+            <md-error *ngIf="!loginForm.controls['password'].valid">
+                exchange is <strong>required</strong>
+            </md-error>
+        </md-form-field >
+
+        <button md-raised-button>Submit</button>
+
+    </form>
+</md-card>
+</div>

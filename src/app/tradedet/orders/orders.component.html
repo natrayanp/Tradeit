@@ -1,24 +1,5 @@
 
 
-<!-- //*********** CODE TO SUBMIT DATA TO KITE *************//
-<md-card fxLayout="row" FxLayoutWrap>
-<form method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform>
-<!--form method="post" id="basket-form" action="http://127.0.0.1:8080/nat" #myform--
-    <input  name="api_key" value={{api_key}} />
-    <input  id="basket" name="data" value={{values3}} />
-</form>
-  
-<!-- <button md-raised-button color="primary" onclick="natnat()" >add basket</button>
-<button md-raised-button color="primary" id ="custom-button" (Click)="testes($event)">Submit basket</button> --
-<button id="natsss">autoclick</button>
-
-<input #someInput type="text"/>
-<button #natbutton (click)="natrayan()">comme</button>
-<button #anabutton (click)="ananthi()">ananti</button>
-</md-card>
-//*********** CODE TO SUBMIT DATA TO KITE *************// -->
-
-
 <md-toolbar color="primary">
           
 </md-toolbar>
@@ -210,12 +191,10 @@
                                           <td data-title="disclosed_quantity">{{data.disclosed_quantity}}</td>
                                           <td data-title="validity">{{data.validity}}</td>
                                           <td data-title="Edit/Remove">
-                                            <button md-button class="btnclass">
-                                                <md-icon (click)=removeitem(data)>cancel</md-icon>
-                                            </button>
-                                            <!--button md-button class="btnclass"-->
-                                                    <md-icon (click)=edititem(data)>edit</md-icon>
-                                                <!--/button-->
+                                            
+                                            <button md-icon-button (click)="removeitem(pf)"><md-icon>cancel</md-icon></button>
+                                            <button md-icon-button (click)="edititem(pf)"><md-icon>edit</md-icon></button>
+                                            
                                           </td>
                                         </tr>
                                       </tbody>
@@ -229,10 +208,84 @@
                     
                     
                 </md-tab>
+                <md-tab label="stock wise order">
+                       
+                <table class="responsive-table">
+                    <caption></caption>
+                    
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">tradingsymbol</th>
+                        <th scope="col">exchange</th>
+                        <th scope="col">transaction_type</th>
+                        <th scope="col">order_type</th>
+                        <th scope="col">quantity</th>
+                        <th scope="col">product</th>
+                        <th scope="col">price</th>
+                        <th scope="col">trigger_price</th>
+                        <th scope="col">disclosed_quantity</th>
+                        <th scope="col">validity</th>
+                        <th scope="col">portfolios</th>
+                        <th scope="col">Edit/Remove</th>
+                        
+                      </tr>
+                    </thead>
+                    
+                    <tfoot>
+                    </tfoot>
+                    
+                    <tbody>
+                   
+                    <tr *ngFor="let data1 of myjsontran">
+                        <td scope="row">{{data1.data.tradingsymbol}}</td>
+                        <td data-title="exchange">{{data1.data.exchange}}</td>
+                        <td data-title="transaction_type">{{data1.data.transaction_type}}</td>
+                        <td data-title="order_type">{{data1.data.order_type}}</td>
+                        <td data-title="quantity">{{data1.data.quantity}}</td>
+                        <td data-title="product">{{data1.data.product}}</td>
+                        <td data-title="price">{{data1.data.price}}</td>
+                        <td data-title="trigger_price">{{data1.data.trigger_price}}</td>
+                        <td data-title="disclosed_quantity">{{data1.data.disclosed_quantity}}</td>
+                        <td data-title="validity">{{data1.data.validity}}</td>
+                        <td data-title="portfolios" >{{data1.portfolio}}</td>
+                        <td data-title="Edit/Remove">
+                          
+                          <button md-icon-button (click)="removeitem(pf)"><md-icon>cancel</md-icon></button>
+                          <button md-icon-button (click)="edititem(pf)"><md-icon>edit</md-icon></button>
+                          
+                        </td>
+                      </tr>
+                    
+                    </tbody>
+                
+                  </table>
+         
             
-            
-            
-                <md-tab label="stock wise order">{{myjsontran | json}}</md-tab>
+                </md-tab>
+
               </md-tab-group>
+           
+           
+            </md-card>
 
-
+<!-- //*********** CODE TO SUBMIT DATA TO KITE *************//-->
+<md-card fxLayout="row" FxLayoutWrap>
+        <!--form method="post" id="basket-form" action="https://kite.trade/connect/basket" #myform-->
+        <!--form method="post" id="basket-form" action="https://90jr17xd3j.execute-api.ap-southeast-1.amazonaws.com/dev/api" #myform-->
+        <form method="post" id="basket-form" action="http://127.0.0.1:8000/api" #myform>
+            <input  name="api_key" value={{api_key}} />
+            <input  id="basket" name="data" value={{values3}} />
+        </form>
+        {{myjsontosubmit}}
+        <button #natbutton (click)="natrayan()">comme</button>
+</md-card>
+        <!-- <button md-raised-button color="primary" onclick="natnat()" >add basket</button>
+        <button md-raised-button color="primary" id ="custom-button" (Click)="testes($event)">Submit basket</button> --
+        <button id="natsss">autoclick</button>
+        
+        <input #someInput type="text"/>
+        <button #natbutton (click)="natrayan()">comme</button>
+        <button #anabutton (click)="ananthi()">ananti</button>
+        </md-card>
+        //*********** CODE TO SUBMIT DATA TO KITE *************// -->

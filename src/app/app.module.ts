@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule }    from '@angular/http';
 
 import { MdSidenavModule } from '@angular/material';
 import { MdToolbarModule } from '@angular/material';
@@ -20,6 +21,8 @@ import {MdSelectModule} from '@angular/material';
 import {MdChipsModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material';
 
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -42,6 +45,11 @@ import { BodyComponent } from './weblayout/body/body.component';
 import { UserCardComponent } from './tradedet/users/user-card/user-card.component';
 import { UserListComponent } from './tradedet/users/user-list/user-list.component';
 import { OrderCardComponent } from './tradedet/orders/order-card/order-card.component';
+import { LoginComponent } from './home/login/login.component';
+import { LoginchkComponent } from './home/loginchk/loginchk.component';
+import { SetjwtserviceService } from './natservices/setjwtservice.service';
+
+
 //import {InterceptorModule} from './app.interceptor.module';
 
 
@@ -59,12 +67,15 @@ import { OrderCardComponent } from './tradedet/orders/order-card/order-card.comp
     BodyComponent,
     UserCardComponent,
     UserListComponent,
-    OrderCardComponent
+    OrderCardComponent,
+    LoginComponent,
+    LoginchkComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    HttpModule,
     MdSidenavModule,
     MdToolbarModule,
     MdButtonModule,
@@ -83,10 +94,12 @@ import { OrderCardComponent } from './tradedet/orders/order-card/order-card.comp
     MdChipsModule,
     MatIconModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
  //   InterceptorModule,
-    RouterModule.forRoot(ROUTES)       
+    RouterModule.forRoot(ROUTES/*,{enableTracing: true }*/)       
   ],
-  providers: [],
+  providers: [SetjwtserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

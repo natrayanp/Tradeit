@@ -13,11 +13,8 @@ import {HttpHeaders,HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '
 
 export class OrdersComponent implements OnInit {
 
- /*  api_key :string = 'uptxfbd1y845rxva';
-  values:string='[{"tradingsymbol": "INFY","exchange": "NSE","transaction_type": "BUY","order_type": "MARKET","quantity": 10,"readonly": "true"}]';
-  values1 = JSON.parse(this.values);
-  values3=JSON.stringify(this.values1); */
 
+  
   public rForm : FormGroup;
   sForm: FormGroup;
   ordertypes : string[]= ['MKT','LMT','SL','SL-M'];
@@ -29,11 +26,23 @@ export class OrdersComponent implements OnInit {
   selectedpfscpy:string[];
   rform : any;
   myjsoncpy: any;
-  myjsonpf : any[];
-  myjsontran = [];
+  myjsontosubmit=[];
+  myjsonpf : any[];  
   myjsonporttran =[{portfolio:null ,data: []}];
+  myjsontran=[{portfolio:null ,data:{}}];
   matchindxo:number;
 
+  // Values for submitting the form START
+
+  api_key :string = 'uptxfbd1y845rxva';
+  //values:string='[{"tradingsymbol": "INFY","exchange": "NSE","transaction_type": "BUY","order_type": "MARKET","quantity": 10,"readonly": "true"}]';
+  values=this.myjsontosubmit;
+  //values1 = JSON.parse(this.values);
+  values3 :string;
+  
+
+  
+  // Values for submitting the form END
 
   constructor(private fb: FormBuilder, private renderer: Renderer2) { 
     this.rForm = fb.group({
@@ -62,7 +71,7 @@ export class OrdersComponent implements OnInit {
 
   natrayan() {
     //this.someInput.nativeElement.value = "Anchovies!";
-    this.renderer.setAttribute(this.someInput.nativeElement,"value","Anchovies!");
+    //this.renderer.setAttribute(this.someInput.nativeElement,"value","Anchovies!");
     //this.renderer.setProperty(this.myform.nativeElement,"submit",true);
     this.myform.nativeElement.submit();
   }
@@ -70,6 +79,7 @@ export class OrdersComponent implements OnInit {
 ngOnInit() {
 
 }
+
 
 
 removechip(closechipval: string): void {
@@ -83,19 +93,38 @@ removechip(closechipval: string): void {
   }
 }
 
- addStocklist(rform){
-  console.log(rform);
-  this.myjsoncpy = null;
-  this.myjsoncpy=rform;
-  //console.log(JSON.stringify(rform));
-  //console.log(this.myjsoncpy);
-  this.myjsonpf=this.myjsoncpy.Portfolioname;
-  //console.log(this.myjsoncpy.Portfolioname);
-  delete this.myjsoncpy.Portfolioname;
 
-  console.log("HERE" + JSON.stringify(this.myjsoncpy));
+
+ addStocklist(rform){
+  //this.rformv=null;  
+  this.myjsoncpy = null;
+  //this.rformv=rform;
+  this.myjsoncpy=rform;
+  //console.log(JSON.stringify(this.rformv));
+  this.myjsonpf=this.myjsoncpy.Portfolioname;
+  delete this.myjsoncpy.Portfolioname;
+  //this.myjsontran.push(this.rformv);
+
+
+  //Code for stock wise START
+  /* Code to be implemented to make sure same stocks get combined and not added as separate item in the array*/
+  if(this.myjsontran[0].portfolio==null){
+       
+    this.myjsontran[0].portfolio=this.myjsonpf;
+    this.myjsontran[0].data=this.myjsoncpy;
+    
+
+  }else{
+  //  console.log("inside else");
+    this.myjsontran[this.myjsontran.length]={portfolio:null ,data: []};
+    this.myjsontran[this.myjsontran.length-1].portfolio=this.myjsonpf;
+    this.myjsontran[this.myjsontran.length-1].data=this.myjsoncpy;
+  };
+
+//Code for stock wise ENDS
+
   var i=0;
-  //Code for portfolio wise
+  //Code for portfolio wise START
         var index; 
 
         for(i=0;this.myjsonpf.length>i;i+=1){
@@ -128,19 +157,27 @@ removechip(closechipval: string): void {
           }
 
         }
-        
-    //Code for Stock wise
-    ;
-      if(this.matchindxo = this.hasmatch(this.myjsoncpy.tradingsymbol)) { 
-          //logic to add the share quantity to the same list
-          this.myjsontran[this.matchindxo].quantity += this.myjsoncpy.quantity;
-      }else{
-        this.myjsontran.push(this.myjsoncpy);
-      };
+      //Code for portfolio wise END
+     
+
+
+
+    //code for JSON to submit START
+    this.myjsontosubmit.push(this.myjsoncpy);
+    this.values3=JSON.stringify(this.myjsontosubmit);  
+    //code for JSON to submit END
+
+
+    console.log("portfolio wise : "+JSON.stringify(this.myjsonporttran));
+    console.log("Stock wise : "+JSON.stringify(this.myjsontran));
+    console.log("to submit : "+JSON.stringify(this.myjsontosubmit));
+
+
+  this.rForm.reset();
 
  };
 
- hasmatch(tradsym : string){
+/* hasmatch(tradsym : string){
   var l =null;
   var matchindx:number;
   matchindx=-1;
@@ -162,7 +199,7 @@ removechip(closechipval: string): void {
   return matchindx;
 } 
 
- };
+ };*/
 
  hastag(tagname : string){
   var k =null;
